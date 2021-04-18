@@ -76,7 +76,6 @@
 	z-index: 10;
 	transition: ease-in 1s;
 	background: var(--bg);
-	display: none;
 }
 
 .preloader_hide{
