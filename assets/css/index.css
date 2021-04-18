@@ -1138,9 +1138,6 @@ label {
 	text-transform: uppercase;
 	font-size: 4.7vw;
 	font-weight: 900;
-	width: 50%;
-	margin-bottom: 20px;
-	margin-left: 5%;
 }
 
 .follow h2 span{
@@ -1149,28 +1146,55 @@ label {
 	-webkit-text-fill-color: transparent;
 }
 
-.follow .squiggle_btn{
-	margin-left: 5%;
-}
 
-.glider div{
-	height: 35vw;
-	display: flex;
-	margin-top: auto;
-}
+
+
 
 .glider{
-	cursor: grab;
+    cursor: grab;
 }
 
-.glider div:nth-child(even){
+.glider_item{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 70vh;
+}
+
+
+.glider_item .img_wrap{
+    height: 60vh;
+    overflow: hidden;
 	margin-bottom: auto;
+	
+}
+
+.glider .glider_item:nth-child(even) .img_wrap{
+	margin-top: auto;
+	margin-bottom: 0;
+}
+
+.glider_item img{
+	height: 100%;
+}
+
+.glider_info{
+    position: absolute;
+	top: 0;
+	left: 0;
+    width: 40%;
+    height: 100%;
+    transition: opacity ease-out 1s;
+    z-index: 1;
+	padding: 5%;
 }
 
 
-.glider div img{
-	width: 70%;
+.glider_info p{
+    margin: 20px 0px;
+	line-height: 25px;
 }
+
  
 
 
@@ -1627,14 +1651,48 @@ footer{
 	.follow h2{
 		font-size: 40px;
 		width: 100%;
-		margin-left: 10px;
 	}
 
+    .glider::after{
+        content: 'Your project is here';
+        background: var(--text);
+        color: var(--bg);
+        font-size: 17vw;
+        font-weight: 900;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 605%;
+        bottom: 15%;
+        height: 80%;
+        width: 90%;
+        padding: 5%;
+        z-index: 10;
+    }
+    .glider_box{
+        display: none;
+    }
 
-	.follow .squiggle_btn{
-		margin-left: 10px;
-		margin-bottom: 20px;
-	}
+    .glider_item{
+        padding: 1%;
+    }
+
+    .glider_item .img_wrap{
+        height: 400px;
+        overflow: hidden;
+    }
+
+    .glider_item img{
+        width: 100%;
+    }
+
+    .glider_info{
+        position: static;
+        opacity: 1!important;
+        width: 100%;
+    }
+
 
 	.glider div{
 		height: auto;
@@ -1654,6 +1712,8 @@ footer{
 	}
 
 
+
+	
 	.coffee_cup {
 		width: 150px;
 		height: 190px;

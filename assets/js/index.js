@@ -32,11 +32,26 @@ window.onload = function () {
             {
               breakpoint: 900,
               settings: {
-
-                slidesToShow: 4,
+                slidesToShow: 2.5,
               }
             }
           ]
+    })
+
+    document.querySelector('.glider').addEventListener('scroll', function (e) {
+        const glider_box = document.querySelector('.glider_box');
+        const glider_info = document.querySelector('.glider_info');
+
+        if (glider_box.classList.contains('visible')) {
+            glider_info.style.opacity = 1;
+            glider_info.style.zIndex = 1;
+        } else if (glider_box.classList.contains('left-1')) {
+            glider_info.style.zIndex = -1;
+            glider_info.style.opacity = 0.3;
+        } else {
+            glider_info.style.opacity = 0;
+            glider_info.style.zIndex = -1;
+        }
     })
 }
 
