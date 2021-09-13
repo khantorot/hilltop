@@ -66,106 +66,6 @@ window.onload = function () {
 const isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(navigator.userAgent);
 
 
-let data = {
-    0: {
-        "name": "Идеальный Матча-Латте",
-        "price": 150,
-        "size": 120,
-        "image": "cof-matcha.png"
-    },
-    1: {
-        "name": "Латте с древесным углем",
-        "price": 150,
-        "size": 120,
-        "image": "cof-charcoal.png"
-    },
-    2: {
-        "name": "Ходжича Латте",
-        "price": 150,
-        "size": 120,
-        "image": "cof-hojicha.png"
-    },
-    3: {
-        "name": "Чай с молоком",
-        "price": 150,
-        "size": 120,
-        "image": "cof-chai.png"
-    },
-    4: {
-        "name": "Латте красный бархат",
-        "price": 150,
-        "size": 120,
-        "image": "cof-redvelvet.png"
-    },
-    5: {
-        "name": "Молочные розы",
-        "price": 150,
-        "size": 120,
-        "image": "cof-rose.png"
-    },
-    6: {
-        "name": "Латте с куркумой",
-        "price": 150,
-        "size": 120,
-        "image": "cof-turmeric.png"
-    },
-    7: {
-        "name": "Матта ум",
-        "price": 150,
-        "size": 120,
-        "image": "cof-ubi.png"
-    },
-    8: {
-        "name": "Идеальный Матча-Латте",
-        "price": 150,
-        "size": 120,
-        "image": "cof-matcha.png"
-    },
-    9: {
-        "name": "Латте с древесным углем",
-        "price": 150,
-        "size": 120,
-        "image": "cof-charcoal.png"
-    },
-    10: {
-        "name": "Ходжича Латте",
-        "price": 150,
-        "size": 120,
-        "image": "cof-hojicha.png"
-    },
-    11: {
-        "name": "Чай с молоком",
-        "price": 150,
-        "size": 120,
-        "image": "cof-chai.png"
-    },
-    12: {
-        "name": "Латте красный бархат",
-        "price": 150,
-        "size": 120,
-        "image": "cof-redvelvet.png"
-    },
-    13: {
-        "name": "Молочные розы",
-        "price": 150,
-        "size": 120,
-        "image": "cof-rose.png"
-    },
-    14: {
-        "name": "Латте с куркумой",
-        "price": 150,
-        "size": 120,
-        "image": "cof-turmeric.png"
-    },
-    15: {
-        "name": "Матта ум",
-        "price": 150,
-        "size": 120,
-        "image": "cof-ubi.png"
-    },
-}
-
-
 const menu_btn = document.querySelector('.menu_btn');
 const cart_btn = document.querySelector('.cart_btn');
 const cart_box = document.querySelector('.cart');
@@ -215,7 +115,6 @@ function chekCart() {
 
 
 loadGoods();
-loadMenu();
 loadCart();
 
 function loadGoods() {
@@ -234,24 +133,6 @@ function loadGoods() {
     }
     document.querySelector('.coffee_items').innerHTML = out;
 }
-
-function loadMenu() {
-    let out = '';
-
-    for (key in data) {
-        if (data[key].status == "menu") {
-            out += '<div class="coffee_menu_item">';
-            out += '<div class="add_btn" data-art="' + key + '"></div>';
-            out += '<h4>' + data[key].name + '</h4>';
-            out += '<span>' + data[key].price + 'c</span>';
-            out += '<span>' + data[key].price1 + 'c</span>';
-            out += '</div>';
-        }
-    }
-    document.querySelector('.coffee_menu').innerHTML = out;
-}
-
-
 
 function loadCart() {
     cart_btn.innerHTML = countGoods();

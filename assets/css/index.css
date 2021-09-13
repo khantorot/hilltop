@@ -39,8 +39,10 @@
 	position: fixed;
 	top: -100%;
 	width: 300%;
-    z-index: 1;
+    z-index: 1000;
     opacity: 0.9;
+	pointer-events: none;
+	overflow-x: hidden;
 }
 
 @keyframes grain {
@@ -76,6 +78,7 @@
 	z-index: 10;
 	transition: ease-in 1s;
 	background: var(--bg);
+	display: none;
 }
 
 .preloader_hide{
@@ -359,9 +362,9 @@ nav{
 	transform: translateY(-100%);
 }
 
+.menu h3,
 .cart h3{
-	margin-top: 10px;
-	margin-bottom: 30px;
+	margin: 10px 10px 20px 0px;
 	font-size: 2vw;
 }
 
@@ -385,14 +388,17 @@ nav{
 }
 
 .name{
-	width: 80%;
+	width: calc(100% - 100px);
 	margin-top: 20px;
 	font-size: 20px;
+	font-weight: 700;
 }
 
 .price{
-	width: 20%;
+	min-width: 100px;
+	font-weight: 700;
 	margin-top: 20px;
+	margin-left: auto;
 	text-align: right;
 }
 
@@ -415,12 +421,11 @@ nav{
 	background: #a35151;
 	color: var(--bg);
 	margin-left: auto;
-	border-radius: 50%;
 }
 
 
 .quantity{
-	margin-top: 5px;
+	margin-top: 3px;
 	min-width: 30px;
 	text-align: center;
 }
@@ -435,9 +440,11 @@ nav{
 .total{
 	background: #000;
 	width: 95%;
-	margin: 10px 0;
+	margin: 20px 0;
 	padding: 10px;
 	display: flex;
+	font-size: 18px;
+	font-weight: 700;
 }
 
 
@@ -456,7 +463,7 @@ nav{
 	color: var(--bg);
 	font-weight: 700;
 	transition: 0.2s;
-	margin: 20px 0px;
+	margin-bottom: 50px;
 	cursor: pointer;
 }
 
@@ -471,7 +478,7 @@ nav{
 	width: 100%;
 	height: 100%;
 	z-index: 10;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.9);
 	color: var(--text);
 	display: flex;
 	align-items: center;
@@ -513,7 +520,6 @@ nav{
 	width: 50px;
 	height: 50px;
 	background: #a35151;
-	border-radius: 50%;
 	position: absolute;
 	top: 4%;
 	z-index: 1;
@@ -521,9 +527,26 @@ nav{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: var(--bg);
-	font-weight: 900;
-	font-size: 18px;
+}
+
+.close_btn span{
+	width: 30px;
+	height: 4px;
+}
+
+.close_btn span::after,
+.close_btn span::before{
+	content: '';
+	position: absolute;
+	width: 30px;
+	height: 4px;
+	border-radius: 50%;
+	background: var(--bg);
+	transform: rotate(-44deg);
+}
+
+.close_btn span::after{
+	transform: rotate(44deg);
 }
 
 .form form h4{
@@ -765,12 +788,12 @@ label {
 	align-items: flex-start;
 	justify-content: center;
 	flex-direction: column;
-	padding: 50px 5% 0 5%;
+	padding: 70px 5% 20px 5%;
 }
 
 .header_text p{
+	max-width: 460px;
 	font-size: 14px;
-	max-width: 450px;
 	text-transform: uppercase;
 	font-weight: 700;
 }
@@ -781,14 +804,15 @@ label {
 
 .header_text h1{
 	text-transform: uppercase;
-	font-size: 8vw;
+	font-size: 10vw;
+	line-height: 10vw;
 	font-weight: 900;
-	margin: 10px 0px;
+	margin: 20px 0;
 }
 
 .header_text h1 span{
 	display: block;
-	-webkit-text-stroke: 2px;
+	-webkit-text-stroke: 0.3vw;
 	-webkit-text-stroke-color: var(--text);
 	-webkit-text-fill-color: transparent;
 }
@@ -800,7 +824,7 @@ label {
 	position: absolute;
 	top: 0;
 	left: 0;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 .header_bg::-webkit-scrollbar { width: 0; }
@@ -863,6 +887,21 @@ label {
 .header_bg_cup_hover_eff .layer:nth-child(1){
 	background: var(--index1);
 }
+.header_bg_cup_hover_eff .layer:nth-child(2){
+	background: var(--index);
+}
+.header_bg_cup_hover_eff .layer:nth-child(2)::after{
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 5vw;
+	height: 5vw;
+	background: url(../../content/icons/logo.png);
+	background-size: contain;
+}
+
 .header_bg_cup .layer:nth-child(2){
 	border-top: none;
 	height: 12vw;
@@ -911,7 +950,7 @@ label {
 	position: absolute;
 	pointer-events: none;
 	color: var(--text);
-	font-size: 5vw;
+	font-size: 10vw;
 	-webkit-text-stroke: 3px;
 	-webkit-text-stroke-color: var(--index);
 	-webkit-text-fill-color: var(--bg);
@@ -944,6 +983,7 @@ label {
 .about_text p{
 	margin: 15px 0px;
 	font-size: 1.3vw;
+	font-weight: 700;
 	line-height: 2.3vw;
 }
 
@@ -1014,11 +1054,12 @@ label {
 }
 
 .coffee_item{
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	width: 300px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	align-items: flex-start;
 	position: relative;
 	padding: 10px;
 }
@@ -1032,22 +1073,25 @@ label {
 .coffee_item:hover img{
 	height: 130px;
 	transform: rotate(360deg);
-	filter: grayscale(1);
 }
 
 .coffee_item h4{
 	width: 100%;
 	text-align: center;
-	font-size: 18px;
-	margin: 15px 0px;
+	font-size: 16px;
+	margin: 20px 0px;
 }
 
 .coffee_size {
-	margin-left: auto;
-	margin-right: 40px;
+	font-size: 14px;
+	font-weight: 700;
+	width: calc(50% - 30px);
+	text-align: right;
 }
 .coffee_price{
-	margin-left: 50px;
+	font-size: 14px;
+	font-weight: 700;
+	width: calc(50% - 30px);
 }
 
 .add_btn{
@@ -1072,6 +1116,7 @@ label {
 	transform: translate(-50%, -50%);
 	width: 4px;
 	height: 20px;
+	border-radius: 50%;
 	background: var(--bg);
 }
 
@@ -1096,7 +1141,7 @@ label {
 	width: 50px;
 	height: 50px;
 	z-index: 2;
-	background: var(--bg);
+	background: var(--index);
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
@@ -1149,33 +1194,51 @@ label {
 
 
 
+
 .glider{
     cursor: grab;
 }
 
 .glider_item{
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	min-height: 70vh;
 }
 
-
 .glider_item .img_wrap{
-    height: 60vh;
-    overflow: hidden;
-	margin-bottom: auto;
-	
+	position: relative;
+	max-height: 40vw;
+	width: 80%;
+	overflow: hidden;
+	border-radius: 10px;
 }
 
-.glider .glider_item:nth-child(even) .img_wrap{
-	margin-top: auto;
-	margin-bottom: 0;
-}
-
-.glider_item img{
+.glider_item .img_wrap img{
 	height: 100%;
 }
+
+.glider_item p{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 1;
+	font-size: 8vw;
+	font-weight: 900;
+	writing-mode: vertical-lr;
+	transform: translateX(50%);
+	-webkit-text-stroke: 3px;
+	-webkit-text-stroke-color: var(--text);
+	-webkit-text-fill-color: transparent;
+}
+
+.glider_item p span{
+	-webkit-text-stroke: 3px;
+	-webkit-text-stroke-color: var(--index1);
+	-webkit-text-fill-color: var(--index);
+}
+
 
 .glider_info{
     position: absolute;
@@ -1190,9 +1253,12 @@ label {
 
 
 .glider_info p{
-    margin: 20px 0px;
-	line-height: 25px;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 30px;
+	margin: 20px 0;
 }
+
 
  
 
@@ -1258,6 +1324,8 @@ footer{
 	height: 0%;
 	background:  var(--index1);
 	border-radius: 0px 0px 8% 8%;
+	box-shadow: inset 1vw 1vw 3vw rgb(121, 113, 5);
+	box-shadow: inset -1vw -1vw 3vw rgb(121, 113, 5);
 	
 }
 
@@ -1524,12 +1592,15 @@ footer{
 
 	.header_text h1{
 		font-size: 50px;
+		line-height: 50px;
 	}
 	.header_text p{
-		font-size: 17px;
+		font-size: 20px;
+		width: 100%;
 	}
 
 	.header_bg img{
+		left: -70%;
 		width: auto;
 		height: 100%;
 		z-index: -1;
@@ -1557,10 +1628,24 @@ footer{
 		height: 20px;
 		top: -12px;
 		left: 0px;
+		background: var(--index1);
 	}
 
 	.header_bg_cup .layer:nth-child(2){
 		height: 70px;
+		background: var(--index);
+	}
+
+	.header_bg_cup .layer:nth-child(2)::after{
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 10vw;
+		height: 10vw;
+		background: url(../../content/icons/logo.png);
+		background-size: contain;
 	}
 
 	.header_bg_cup .layer:nth-child(3){
@@ -1578,7 +1663,8 @@ footer{
 	.cursor_text{
 		padding: 10px;
 		position: static;
-		font-size: 10vw;
+		font-size: 50px;
+		text-align: center;
 		-webkit-text-stroke: 2px;
 		-webkit-text-stroke-color: var(--index);
 		-webkit-text-fill-color: var(--bg);
@@ -1594,7 +1680,7 @@ footer{
 	}
 
 	.about_text p{
-		font-size: 25px;
+		font-size: 18px;
 		line-height: 35px;
 	}
 
@@ -1669,22 +1755,10 @@ footer{
         padding: 5%;
         z-index: 10;
     }
-    .glider_box{
-        display: none;
-    }
 
-    .glider_item{
-        padding: 1%;
-    }
-
-    .glider_item .img_wrap{
-        height: 400px;
-        overflow: hidden;
-    }
-
-    .glider_item img{
-        width: 100%;
-    }
+	.glider_box{
+		display: none;
+	}
 
     .glider_info{
         position: static;
@@ -1692,25 +1766,15 @@ footer{
         width: 100%;
     }
 
-
-	.glider div{
-		height: auto;
-	}
-
-	.glider div:nth-child(even){
-		margin-bottom: 0;
-	}
-
-
-	.glider div img{
-		width: calc(100% - 20px);
-		height: auto;
-	}
-	.glider div{
+	.glider_item .img_wrap{
 		max-height: 400px;
+		height: 400px;
 	}
 
-
+	.glider_item p{
+		transform: translateX(0);
+		font-size: 50px;
+	}
 
 	
 	.coffee_cup {
